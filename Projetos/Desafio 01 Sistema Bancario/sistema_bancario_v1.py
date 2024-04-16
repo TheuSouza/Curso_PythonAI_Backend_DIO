@@ -57,7 +57,6 @@ while True:
             elif saque > limite:
                 print('\033[1;31mLimite de saque excedido!\033[0m')
                 print(f'Limite de Saque R${limite:.2f}')
-                break
             else:
                 saques.append(saque)
                 saldo -= saque
