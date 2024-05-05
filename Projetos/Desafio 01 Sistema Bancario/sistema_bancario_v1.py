@@ -33,7 +33,7 @@ while True:
             header()
             deposito = float(input('Informe o valor do deposito: '))
             if deposito <= 0:
-                print('\033[34mValor inválido!\nDigite um Valor positivo.\033[0m')
+                print('\033[34mValor inválido!\nDigite um Valor maior que zero.\033[0m')
                 continue
             depositos.append(deposito)
             saldo += deposito
@@ -51,10 +51,10 @@ while True:
                 break
             elif numero_saque >= LIMITE_SAQUE:
                 print(f'Número de Saque: {numero_saque}\nLimite de Saque: {LIMITE_SAQUE} ')
-                print('\033[1;31mLimite de saque excedido!\033[0m')
+                print('\033[1;31mLimite de saque diário excedido!\033[0m')
                 break
             elif saque > limite:
-                print('\033[1;31mLimite de saque excedido!\033[0m')
+                print('\033[1;31mValor do limite de saque excedido!\033[0m')
                 print(f'Limite de Saque R${limite:.2f}')
             else:
                 saques.append(saque)
@@ -67,7 +67,7 @@ while True:
 
     elif opcao == 3:
         header()
-        print(f'INFORMAÇÃO DA CONTA 001:\n \033[1;36mSaldo R${saldo:.2f}\033[0m')
+        print(f'INFORMAÇÃO DA CONTA:\n \033[1;36mSaldo R${saldo:.2f}\033[0m')
         print('SAQUES REALIZADOS:')
         for cont, saque in enumerate(saques):
             print(f' {cont + 1} - \033[31mR${saque:.2f}\033[0m')
