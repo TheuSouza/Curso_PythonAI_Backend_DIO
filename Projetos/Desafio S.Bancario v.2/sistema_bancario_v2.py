@@ -22,7 +22,14 @@ while True:
         contas = banco.cadastro_conta(contas, clientes)
     elif opcao == 3:
         for cliente in clientes:
-            print(cliente)
+            print(f"Nome: {cliente['nome']}")
+            print(f"CPF: {cliente['cpf']}")
+            print(f"Nascimento: {cliente['data_nascimento']}")
+            print(f"Endereço: {cliente['endereco']}")
+            for i, conta in enumerate(cliente['contas']):
+                print(f'{c.yellow()}  Conta » {i + 1}{c.reset()}')
+                print(f'    Conta: {conta['conta']} Agência: {conta['agência']}')
+            v.sep()             
     elif opcao == 4:
         break
     else:

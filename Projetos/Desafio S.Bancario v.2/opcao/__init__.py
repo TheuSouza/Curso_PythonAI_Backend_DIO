@@ -37,6 +37,7 @@ def saque( * , saldo, saque, limite, numero_saque, limite_saque, total_saque):
         elif limite_saque_excedido:
             print(f'{c.red()}Valor do limite de saque excedido!{c.reset()}')
             print(f'Limite de Saque R${limite:.2f}')
+            break
 
         else:
             total_saque.append(saque)
