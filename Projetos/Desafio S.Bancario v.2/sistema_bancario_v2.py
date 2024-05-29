@@ -1,8 +1,8 @@
 from time import sleep
-import opcao as op
+import opcao_caixa as op
 import visual as v
 import cores as c
-import banco
+import opcao_banco as banco
 
 saldo = 0
 limite = 500
