@@ -30,3 +30,6 @@ def ngreen():
 
 def ncyan():
     return '\033[1;36m'
+
+def rwhite():
+    return '\033[7;37;40m'

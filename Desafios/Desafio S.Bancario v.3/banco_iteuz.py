@@ -2,6 +2,10 @@ from time import sleep
 import zestilo as ze
 import funcao_gerente as gerente
 
+clientes_pessoa_fisica = list()
+clientes_pessoa_juridica = list()
+contas = list()
+
 ze.bem_vindo()
 while True:
     opcao = ze.menu0()
@@ -13,10 +17,10 @@ while True:
             if opcao == 1:
                 opcao = ze.menu3()
                 if opcao == 1:
-                    gerente.cadastrar_pessoa_fisica()
+                    gerente.cadastrar_pessoa_fisica(clientes_pessoa_fisica)
                     # cadastrar cliente pessoa física.
                 elif opcao == 2:
-                    gerente.cadastrar_pessoa_juridica()
+                    gerente.cadastrar_pessoa_juridica(clientes_pessoa_juridica)
                     # cadastrar cliente pessoa jurídica.
                 elif opcao == 3:
                     sleep(0.5)

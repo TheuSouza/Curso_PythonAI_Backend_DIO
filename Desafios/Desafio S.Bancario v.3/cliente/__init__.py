@@ -16,6 +16,10 @@ class PessoaFisica(Cliente):
         self._cpf = cpf
         self._nome = nome
         self._data_nascimento = data_nascimento
+    
+    @property
+    def cpf(self):
+        return self._cpf
 
 
 class PessoaJuridica(Cliente):
@@ -23,3 +27,7 @@ class PessoaJuridica(Cliente):
         super().__init__(endereco)
         self._cnpj = cnpj
         self._razao_social = razao_social
+    
+    @property
+    def cnpj(self):
+        return self._cnpj
