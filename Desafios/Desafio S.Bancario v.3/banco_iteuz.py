@@ -1,6 +1,7 @@
 from time import sleep
 import zestilo as ze
 import funcao_gerente as gerente
+import funcao_cliente as cliente
 
 clientes_pessoa_fisica = list()
 clientes_pessoa_juridica = list()
@@ -28,11 +29,11 @@ while True:
                 else:
                     ze.erro()
             elif opcao == 2:
-                gerente.cadastrar_conta()
-                # cadastrar conta
+                gerente.cadastrar_conta(contas, clientes_pessoa_fisica, clientes_pessoa_juridica)
+                # cadastrar conta e vincular cliente.
             elif opcao == 3:
-                gerente.listar_clientes()
-                # Listar Clientes
+                gerente.listar_clientes(clientes_pessoa_fisica, clientes_pessoa_juridica)
+                # Listar Clientes e contas.
             elif opcao == 4:
                 break
             else:
@@ -43,11 +44,11 @@ while True:
         while True:
             opcao = ze.menu1()
             if opcao == 1:
-                pass
                 # depositar
+                cliente.deposito(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 2:
-                pass
-                # sacar
+                 # sacar
+                cliente.saque(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 3:
                 pass
                 # extrato
@@ -57,6 +58,7 @@ while True:
                 ze.erro()
 
     elif opcao == 3:
-        break
+        sleep(0.3)
+        print('Encerrando o programa...')
     else:
         ze.erro()

@@ -20,6 +20,14 @@ class PessoaFisica(Cliente):
     @property
     def cpf(self):
         return self._cpf
+    
+    def __str__(self):
+        return f'''
+        Nome:{self._nome}
+        CPF:{self._cpf}
+        Data de Nascimento:{self._data_nascimento}
+        Endereço:{self._endereco}
+    '''
 
 
 class PessoaJuridica(Cliente):
@@ -31,3 +39,10 @@ class PessoaJuridica(Cliente):
     @property
     def cnpj(self):
         return self._cnpj
+    
+    def __str__(self):
+        return f'''
+        Razão Social:{self._razao_social}
+        CNPJ:{self._cnpj}
+        Endereço:{self._endereco}
+    '''
