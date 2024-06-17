@@ -18,25 +18,30 @@ while True:
             if opcao == 1:
                 opcao = ze.menu3()
                 if opcao == 1:
-                    gerente.cadastrar_pessoa_fisica(clientes_pessoa_fisica)
                     # cadastrar cliente pessoa física.
+                    gerente.cadastrar_pessoa_fisica(clientes_pessoa_fisica)
                 elif opcao == 2:
-                    gerente.cadastrar_pessoa_juridica(clientes_pessoa_juridica)
                     # cadastrar cliente pessoa jurídica.
+                    gerente.cadastrar_pessoa_juridica(clientes_pessoa_juridica)
                 elif opcao == 3:
+                    # Retornar ao menu anterior.
                     sleep(0.5)
                     continue
                 else:
+                    # Opção invalida.
                     ze.erro()
+
             elif opcao == 2:
-                gerente.cadastrar_conta(contas, clientes_pessoa_fisica, clientes_pessoa_juridica)
                 # cadastrar conta e vincular cliente.
+                gerente.cadastrar_conta(contas, clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 3:
-                gerente.listar_clientes(clientes_pessoa_fisica, clientes_pessoa_juridica)
                 # Listar Clientes e contas.
+                gerente.listar_clientes(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 4:
+                # Retornar ao menu anterior.
                 break
             else:
+                # Opção invalida.
                 ze.erro()
 
     elif opcao == 2:
@@ -50,15 +55,19 @@ while True:
                  # sacar
                 cliente.saque(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 3:
-                pass
                 # extrato
+                cliente.extrato(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 4:
+                # Retornar ao menu anterior.
                 break
             else:
+                # Opção invalida.
                 ze.erro()
 
     elif opcao == 3:
         sleep(0.3)
-        print('Encerrando o programa...')
+        ze.fim()
+        break
     else:
+        # Opção invalida.
         ze.erro()

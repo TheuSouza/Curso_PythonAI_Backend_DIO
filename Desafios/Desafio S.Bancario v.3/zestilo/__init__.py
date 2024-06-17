@@ -65,7 +65,7 @@ def title(texto):
     print('=' * 50)
 
 def bem_vindo():
-    title('banco iteuz')
+    title('iteuz Bank')
     print(f'{zc.magenta()}\nBem vindo ao Sistema Bancário{zc.reset()}')
     sleep(1)
     print(f'{zc.magenta()}Escolha uma das opções abaixo:{zc.reset()}')
@@ -76,3 +76,10 @@ def erro():
     print(f'{zc.red()}Por favor selecione uma opção válida.{zc.reset()}')
     sleep(1)
 
+def fim():
+    print(f'{zc.green()}\nObrigado por utilizar nossos serviços!{zc.reset()}')
+    sleep(0.6)
+    print(f'{zc.green()}Volte Sempre!{zc.reset()}')
+    sleep(1)
+    print('...')
+    print()

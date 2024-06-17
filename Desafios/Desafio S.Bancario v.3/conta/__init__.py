@@ -52,9 +52,11 @@ class Conta:
         if valor >= 0:
             self._saldo += valor
             print(f'\n{zc.green()}Operação realizada com sucesso!{zc.reset()}')
-
+            return True
         else:
             print(f'\n{zc.red()}Operação falhou! Valor informado é inválido.{zc.reset()}')
+        
+        return False
    
     
 class ContaCorrente(Conta):
