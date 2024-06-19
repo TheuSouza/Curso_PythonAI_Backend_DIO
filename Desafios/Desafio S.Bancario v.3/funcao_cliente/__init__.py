@@ -1,6 +1,19 @@
 import transacoes as trans
 import zcores as zc
+import functools
+from datetime import datetime
 
+def decorador_log(funcao):
+    @functools.wraps(funcao)
+    def log(*args, **kwargs):
+        funcao(*args, **kwargs)
+        print()
+        print(f'Data e Hora: {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}')
+        print()
+    return log
+
+
+@decorador_log
 def saque(pessoa_fisica, Pessoa_juridica):
     num_conta = int(input('\nDigite o número da conta: '))
     valor = float(input('Digite o valor do saque: '))
@@ -20,6 +33,7 @@ def saque(pessoa_fisica, Pessoa_juridica):
                 break
 
 
+@decorador_log
 def deposito(pessoa_fisica, Pessoa_juridica):
     num_conta = int(input('\nDigite o número da conta: '))
     valor = float(input('Digite o valor do deposito: '))
@@ -38,7 +52,7 @@ def deposito(pessoa_fisica, Pessoa_juridica):
                 transacao.registrar(conta)
                 
 
-                
+@decorador_log              
 def extrato(pessoa_fisica, pessoa_juridica):
     num_conta = int(input('\nDigite o número da conta: '))
 
@@ -75,5 +89,4 @@ def extrato(pessoa_fisica, pessoa_juridica):
                             print(f'{zc.green()}{k} = {v}{zc.reset()}')
                         else:
                             print(f'{k} = {v}')
-                        
 

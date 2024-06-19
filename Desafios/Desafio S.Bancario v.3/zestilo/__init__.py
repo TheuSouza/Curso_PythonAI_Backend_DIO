@@ -34,7 +34,8 @@ def menu2():
         [1] Cadastrar Usuário
         [2] Cadastrar Conta
         [3] Clientes
-        [4] Retornar ao Menu anterior
+        [4] Relatório de transações
+        [5] Retornar ao Menu anterior
 
     => '''
     sep()

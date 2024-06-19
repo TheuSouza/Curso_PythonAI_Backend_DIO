@@ -142,4 +142,16 @@ class Historico():
                 'data': datetime.now().strftime('%d/%m/%Y %H:%M:%S')
             }
         )
+    
+    def gerar_relatorio(self, contas, tipo_transacao):
+        for conta in contas:
+            print(f'\nConta N° {conta.numero}', end=(' '))
+            print(f'-> {tipo_transacao}')
+            print(f'\n\tValor\t\tData\t   Hora')
+            for transacao in conta._historico.transacoes:
+                if transacao['tipo'] == tipo_transacao:
+                    print(f'\tR$:{transacao["valor"]:10.2f}\t{transacao["data"]}')
+                elif tipo_transacao == 'Todas transações':
+                    print(f'\tR$:{transacao["valor"]:10.2f}\t{transacao["data"]}')
+            print('\n')
         

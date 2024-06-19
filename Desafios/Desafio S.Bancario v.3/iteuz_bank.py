@@ -38,6 +38,9 @@ while True:
                 # Listar Clientes e contas.
                 gerente.listar_clientes(clientes_pessoa_fisica, clientes_pessoa_juridica)
             elif opcao == 4:
+                # Relatório de transações.
+                gerente.relatorio_trasacoes(contas)
+            elif opcao == 5:
                 # Retornar ao menu anterior.
                 break
             else:

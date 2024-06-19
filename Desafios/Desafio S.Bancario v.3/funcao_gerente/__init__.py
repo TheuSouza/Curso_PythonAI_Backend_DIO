@@ -1,7 +1,21 @@
 import cliente
 import conta as cd
 import zcores as zc
+import functools
+from datetime import datetime
 
+
+def decorador_log(funcao):
+    @functools.wraps(funcao)
+    def log(*args, **kwargs):
+        funcao(*args, **kwargs)
+        print()
+        print(f'Data e Hora: {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}')
+        print()
+    return log
+
+
+@decorador_log
 def listar_clientes(pessoa_fisica, pessoa_juridica):
     for cliente in pessoa_fisica:
         print()
@@ -16,6 +30,8 @@ def listar_clientes(pessoa_fisica, pessoa_juridica):
             print(conta.__str__())
         print()
 
+
+@decorador_log
 def cadastrar_pessoa_fisica(clientes):
     cpf = input(f'{zc.rwhite()}Digite CPF:{zc.reset()}\n=> ').strip()
     busca = [cliente for cliente in clientes if cliente.cpf == cpf]
@@ -34,6 +50,7 @@ def cadastrar_pessoa_fisica(clientes):
         print(f'\n{zc.green()}Cliente cadastrado com sucesso!{zc.reset()}')
 
 
+@decorador_log
 def cadastrar_pessoa_juridica(clientes):
     cnpj = input(f'{zc.rwhite()}Digite CNPJ:{zc.reset()}\n=> ').strip()
     busca = [cliente for cliente in clientes if cliente.cnpj == cnpj]
@@ -50,6 +67,8 @@ def cadastrar_pessoa_juridica(clientes):
         clientes.append(novo_cliente)
         print(f'\n{zc.green()}Cliente cadastrado com sucesso!{zc.reset()}')
 
+
+@decorador_log
 def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
     numero_conta = len(contas) + 1
     tipo_conta =  int(input('''
@@ -78,7 +97,7 @@ def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
         for cliente in pessoa_fisica:
             if cliente.cpf == cpf:
                 cliente._contas.append(conta_completa)
-                print(f'{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
+                print(f'\n{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
                 contas.append(conta_completa)
                 nao_encontrado = False
                 break
@@ -88,7 +107,7 @@ def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
             for cliente in pessoa_fisica:
                 if cliente.cpf == cpf:
                     cliente._contas.append(conta_completa)
-                    print(f'{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
+                    print(f'\n{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
                     contas.append(conta_completa)
                     break
                 
@@ -100,7 +119,7 @@ def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
         for cliente in pessoa_juridica:
             if cliente.cnpj == cnpj:
                 cliente._contas.append(conta_completa)
-                print(f'{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
+                print(f'\n{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
                 contas.append(conta_completa)
                 nao_encontrado = False
                 break
@@ -110,9 +129,36 @@ def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
             for cliente in pessoa_juridica:
                 if cliente.cnpj == cnpj:
                     cliente._contas.append(conta_completa)
-                    print(f'{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
+                    print(f'\n{zc.green()}Conta vinculada com sucesso!{zc.reset()}')
                     contas.append(conta_completa)
                     break
 
     else:
         print(f'\n{zc.red()}Opção inválida!{zc.reset()}')
+
+
+
+def relatorio_trasacoes(contas):
+    tipo_transacao = int(input('''
+        Tipo de transação:
+            [1] Saques
+            [2] Depositos
+            [3] Todas Transações                   
+        => '''))
+    
+    if tipo_transacao == 1:
+        tipo_transacao = 'Saque'
+    elif tipo_transacao == 2:
+        tipo_transacao = 'Deposito'
+    elif tipo_transacao == 3:
+        tipo_transacao = 'Todas transações'
+    else:
+        print(f'\n{zc.red()}Opção inválida!{zc.reset()}')
+    
+    cd.Historico().gerar_relatorio(contas=contas, tipo_transacao=tipo_transacao)
+    
+
+
+    
+
+    
