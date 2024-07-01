@@ -154,4 +154,17 @@ class Historico():
                 elif tipo_transacao == 'Todas transações':
                     print(f'\tR$:{transacao["valor"]:10.2f}\t{transacao["data"]}')
             print('\n')
+    
+
+    def transacoes_do_dia(self):
+        contador_transacoes = 0
+
+        if len(self._transacoes) >= 10:
+            for transacao in self._transacoes:
+                if transacao['data'][:10] == datetime.now().strftime('%d/%m/%Y'):
+                    contador_transacoes += 1
         
+        if contador_transacoes >= 10:
+            print(f'\n{zc.red()}Você realizou mais de 10 transações hoje!{zc.reset()}')
+            
+        return contador_transacoes

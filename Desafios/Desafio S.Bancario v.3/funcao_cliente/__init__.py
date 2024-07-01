@@ -21,15 +21,19 @@ def saque(pessoa_fisica, Pessoa_juridica):
     for cliente in pessoa_fisica:
         for conta in cliente._contas:
             if num_conta == conta._numero:
-                transacao = trans.Saque(valor)
-                transacao.registrar(conta)
+                contador = conta._historico.transacoes_do_dia()
+                if contador < 10:
+                    transacao = trans.Saque(valor)
+                    transacao.registrar(conta)
                 continue
 
     for cliente in Pessoa_juridica:
         for conta in cliente._contas:
             if num_conta == conta._numero:
-                transacao = trans.Saque(valor)
-                transacao.registrar(conta)
+                contador = conta._historico.transacoes_do_dia()
+                if contador < 10:
+                    transacao = trans.Saque(valor)
+                    transacao.registrar(conta)
                 break
 
 
@@ -41,15 +45,19 @@ def deposito(pessoa_fisica, Pessoa_juridica):
     for cliente in pessoa_fisica:
         for conta in cliente._contas:
             if num_conta == conta._numero:
-                transacao = trans.Deposito(valor)
-                transacao.registrar(conta)
+                contador = conta._historico.transacoes_do_dia()
+                if contador < 10:
+                    transacao = trans.Deposito(valor)
+                    transacao.registrar(conta)
                 
 
     for cliente in Pessoa_juridica:
         for conta in cliente._contas:
             if num_conta == conta._numero:
-                transacao = trans.Deposito(valor)
-                transacao.registrar(conta)
+                contador = conta._historico.transacoes_do_dia()
+                if contador < 10:
+                    transacao = trans.Deposito(valor)
+                    transacao.registrar(conta)
                 
 
 @decorador_log              

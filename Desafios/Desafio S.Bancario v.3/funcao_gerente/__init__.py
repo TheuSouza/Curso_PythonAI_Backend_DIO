@@ -31,7 +31,7 @@ def listar_clientes(pessoa_fisica, pessoa_juridica):
         print()
 
 
-@decorador_log
+
 def cadastrar_pessoa_fisica(clientes):
     cpf = input(f'{zc.rwhite()}Digite CPF:{zc.reset()}\n=> ').strip()
     busca = [cliente for cliente in clientes if cliente.cpf == cpf]
@@ -50,7 +50,7 @@ def cadastrar_pessoa_fisica(clientes):
         print(f'\n{zc.green()}Cliente cadastrado com sucesso!{zc.reset()}')
 
 
-@decorador_log
+
 def cadastrar_pessoa_juridica(clientes):
     cnpj = input(f'{zc.rwhite()}Digite CNPJ:{zc.reset()}\n=> ').strip()
     busca = [cliente for cliente in clientes if cliente.cnpj == cnpj]
@@ -68,7 +68,7 @@ def cadastrar_pessoa_juridica(clientes):
         print(f'\n{zc.green()}Cliente cadastrado com sucesso!{zc.reset()}')
 
 
-@decorador_log
+
 def cadastrar_conta(contas, pessoa_fisica, pessoa_juridica):
     numero_conta = len(contas) + 1
     tipo_conta =  int(input('''
