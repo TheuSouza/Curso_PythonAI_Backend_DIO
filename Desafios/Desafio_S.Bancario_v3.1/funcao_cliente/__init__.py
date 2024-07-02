@@ -2,13 +2,34 @@ import transacoes as trans
 import zcores as zc
 import functools
 from datetime import datetime
+from pathlib import Path
+
 
 def decorador_log(funcao):
     @functools.wraps(funcao)
     def log(*args, **kwargs):
         funcao(*args, **kwargs)
+        data_hora = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+
+        info = None
+        if args[0]:
+            info = f'{args[0][:]}'
+        elif args[1]:
+            info = f'{args[1][:]}'
+
+
+        ROOT_PATH = Path(__file__).parent
+
+        try:
+            with open(ROOT_PATH/'log.txt', 'a', newline='', encoding='utf-8') as arquivo:
+                arquivo.write(f'{data_hora} - {funcao.__name__.upper()} - {info}\n')
+        except Exception as exc:
+            print('Erro ao gravar log.')
+            print(f'Erro: {exc}')
+
+
         print()
-        print(f'Data e Hora: {datetime.now().strftime("%d/%m/%Y %H:%M:%S")}')
+        print(f'Data e Hora: {data_hora}')
         print()
     return log
 
@@ -59,8 +80,7 @@ def deposito(pessoa_fisica, Pessoa_juridica):
                     transacao = trans.Deposito(valor)
                     transacao.registrar(conta)
                 
-
-@decorador_log              
+           
 def extrato(pessoa_fisica, pessoa_juridica):
     num_conta = int(input('\nDigite o número da conta: '))
 

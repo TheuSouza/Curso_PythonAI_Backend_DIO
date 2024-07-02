@@ -14,6 +14,9 @@ class PessoaFisica(Cliente):
     def cpf(self):
         return self._cpf
     
+    def __repr__(self):
+        return f'{self.__class__.__name__}: {self._cpf}'
+    
     def __str__(self):
         return f'''
         Nome:{self._nome}
@@ -33,6 +36,9 @@ class PessoaJuridica(Cliente):
     def cnpj(self):
         return self._cnpj
     
+    def __repr__(self):
+        return f'{self.__class__.__name__}: {self._cnpj}'
+
     def __str__(self):
         return f'''
         Razão Social:{self._razao_social}
